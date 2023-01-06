@@ -7,19 +7,9 @@ window.title("Matrix Calculator")
 
 
 # Test commands---------------------------------------------------------------------------------------------------------
-def size():
-    ar = 0
-    ac = 0
+def a_row():
 
-    if A5.get() != "X":
-        ac = 5
-    elif A4.get() != "X":
-        ac = 4
-    elif A3.get() != "X":
-        ac = 3
-    elif A2.get() != "X":
-        ac = 2
-
+    global ar
     if A21.get() != "X":
         ar = 5
     elif A16.get() != "X":
@@ -30,28 +20,91 @@ def size():
         ar = 2
     elif A1.get() != "X":
         ar = 1
-        ac = 1 
-        
-    matrix_size = str(ar) + "x" + str(ac)
+    return ar
 
-    print("Matrix size is", matrix_size)
+
+def a_col():
+
+    global ac
+    if A5.get() != "X":
+        ac = 5
+    elif A4.get() != "X":
+        ac = 4
+    elif A3.get() != "X":
+        ac = 3
+    elif A2.get() != "X":
+        ac = 2
+    elif A1.get() != "X":
+        ac = 1
+    return ac
+
+
+def b_row():
+
+    global br
+    if B21.get() != "X":
+        br = 5
+    elif B16.get() != "X":
+        br = 4
+    elif B11.get() != "X":
+        br = 3
+    elif B6.get() != "X":
+        br = 2
+    elif B1.get() != "X":
+        br = 1
+    return br
+
+
+def b_col():
+
+    global bc
+    if B5.get() != "X":
+        bc = 5
+    elif B4.get() != "X":
+        bc = 4
+    elif B3.get() != "X":
+        bc = 3
+    elif B2.get() != "X":
+        bc = 2
+    elif B1.get() != "X":
+        bc = 1
+    return bc
+
+
+def size():
+    a_row()
+    a_col()
+    b_row()
+    b_col()
+        
+    matrix_size_a = str(a_row()) + "x" + str(a_col())
+    matrix_size_b = str(b_row()) + "x" + str(b_col())
+
+    print("Matrix size is", matrix_size_a)
+    print("Matrix size is", matrix_size_b)
 
 
 def generate():
     result = Toplevel()
     result.title("Result")
+    result.geometry("250x250")
     size()
 
     r1 = [A1.get(), A2.get(), A3.get(), A4.get(), A5.get()]
     r1 = [i for i in r1 if i != 'X']
+    r1 = [eval(i) for i in r1]
     r2 = [A6.get(), A7.get(), A8.get(), A9.get(), A10.get()]
     r2 = [i for i in r2 if i != 'X']
+    r2 = [eval(i) for i in r2]
     r3 = [A11.get(), A12.get(), A13.get(), A14.get(), A15.get()]
     r3 = [i for i in r3 if i != 'X']
+    r3 = [eval(i) for i in r3]
     r4 = [A16.get(), A17.get(), A18.get(), A19.get(), A20.get()]
     r4 = [i for i in r4 if i != 'X']
+    r4 = [eval(i) for i in r4]
     r5 = [A21.get(), A22.get(), A23.get(), A24.get(), A25.get()]
     r5 = [i for i in r5 if i != 'X']
+    r5 = [eval(i) for i in r5]
 
     x1 = Label(result, text=str(r1), font=('Arial', 14))
     x2 = Label(result, text=str(r2), font=('Arial', 14))
@@ -69,6 +122,146 @@ def generate():
         x4.pack()
     if len(r5) != 0:
         x5.pack()
+
+
+def matrix_sum():
+    result = Toplevel()
+    result.title("Result")
+    result.geometry("250x250")
+    print(a_row())
+    print(a_col())
+    print(b_row())
+    print(b_col())
+
+    if a_row() == b_row() and a_col() == b_col():
+        r1 = [A1.get(), A2.get(), A3.get(), A4.get(), A5.get()]
+        r1 = [i for i in r1 if i != 'X']
+        r1 = [eval(i) for i in r1]
+        r2 = [A6.get(), A7.get(), A8.get(), A9.get(), A10.get()]
+        r2 = [i for i in r2 if i != 'X']
+        r2 = [eval(i) for i in r2]
+        r3 = [A11.get(), A12.get(), A13.get(), A14.get(), A15.get()]
+        r3 = [i for i in r3 if i != 'X']
+        r3 = [eval(i) for i in r3]
+        r4 = [A16.get(), A17.get(), A18.get(), A19.get(), A20.get()]
+        r4 = [i for i in r4 if i != 'X']
+        r4 = [eval(i) for i in r4]
+        r5 = [A21.get(), A22.get(), A23.get(), A24.get(), A25.get()]
+        r5 = [i for i in r5 if i != 'X']
+        r5 = [eval(i) for i in r5]
+        r6 = [B1.get(), B2.get(), B3.get(), B4.get(), B5.get()]
+        r6 = [i for i in r6 if i != 'X']
+        r6 = [eval(i) for i in r6]
+        r7 = [B6.get(), B7.get(), B8.get(), B9.get(), B10.get()]
+        r7 = [i for i in r7 if i != 'X']
+        r7 = [eval(i) for i in r7]
+        r8 = [B11.get(), B12.get(), B13.get(), B14.get(), B15.get()]
+        r8 = [i for i in r8 if i != 'X']
+        r8 = [eval(i) for i in r8]
+        r9 = [B16.get(), B17.get(), B18.get(), B19.get(), B20.get()]
+        r9 = [i for i in r9 if i != 'X']
+        r9 = [eval(i) for i in r9]
+        r10 = [B21.get(), B22.get(), B23.get(), B24.get(), B25.get()]
+        r10 = [i for i in r10 if i != 'X']
+        r10 = [eval(i) for i in r10]
+        s1 = [sum(x) for x in zip(r1, r6)]
+        s2 = [sum(x) for x in zip(r2, r7)]
+        s3 = [sum(x) for x in zip(r3, r8)]
+        s4 = [sum(x) for x in zip(r4, r9)]
+        s5 = [sum(x) for x in zip(r5, r10)]
+        x1 = Label(result, text=str(s1), font=('Arial', 14))
+        x2 = Label(result, text=str(s2), font=('Arial', 14))
+        x3 = Label(result, text=str(s3), font=('Arial', 14))
+        x4 = Label(result, text=str(s4), font=('Arial', 14))
+        x5 = Label(result, text=str(s5), font=('Arial', 14))
+
+        if len(r1) != 0:
+            x1.pack()
+        if len(r2) != 0:
+            x2.pack()
+        if len(r3) != 0:
+            x3.pack()
+        if len(r4) != 0:
+            x4.pack()
+        if len(r5) != 0:
+            x5.pack()
+
+    else:
+        np = Label(result, text='Not Possible', font=('Arial', 14))
+        print("I work")
+        np.pack()
+
+
+def matrix_diff():
+    result = Toplevel()
+    result.title("Result")
+    result.geometry("250x250")
+    print(a_row())
+    print(a_col())
+    print(b_row())
+    print(b_col())
+
+    if a_row() == b_row() and a_col() == b_col():
+        r1 = [A1.get(), A2.get(), A3.get(), A4.get(), A5.get()]
+        r1 = [i for i in r1 if i != 'X']
+        r1 = [eval(i) for i in r1]
+        r2 = [A6.get(), A7.get(), A8.get(), A9.get(), A10.get()]
+        r2 = [i for i in r2 if i != 'X']
+        r2 = [eval(i) for i in r2]
+        r3 = [A11.get(), A12.get(), A13.get(), A14.get(), A15.get()]
+        r3 = [i for i in r3 if i != 'X']
+        r3 = [eval(i) for i in r3]
+        r4 = [A16.get(), A17.get(), A18.get(), A19.get(), A20.get()]
+        r4 = [i for i in r4 if i != 'X']
+        r4 = [eval(i) for i in r4]
+        r5 = [A21.get(), A22.get(), A23.get(), A24.get(), A25.get()]
+        r5 = [i for i in r5 if i != 'X']
+        r5 = [eval(i) for i in r5]
+        r6 = [B1.get(), B2.get(), B3.get(), B4.get(), B5.get()]
+        r6 = [i for i in r6 if i != 'X']
+        r6 = [eval(i) for i in r6]
+        r7 = [B6.get(), B7.get(), B8.get(), B9.get(), B10.get()]
+        r7 = [i for i in r7 if i != 'X']
+        r7 = [eval(i) for i in r7]
+        r8 = [B11.get(), B12.get(), B13.get(), B14.get(), B15.get()]
+        r8 = [i for i in r8 if i != 'X']
+        r8 = [eval(i) for i in r8]
+        r9 = [B16.get(), B17.get(), B18.get(), B19.get(), B20.get()]
+        r9 = [i for i in r9 if i != 'X']
+        r9 = [eval(i) for i in r9]
+        r10 = [B21.get(), B22.get(), B23.get(), B24.get(), B25.get()]
+        r10 = [i for i in r10 if i != 'X']
+        r10 = [eval(i) for i in r10]
+        s1 = [e1 - e2 for (e1, e2) in zip(r1, r6)]
+        s2 = [e1 - e2 for (e1, e2) in zip(r2, r7)]
+        s3 = [e1 - e2 for (e1, e2) in zip(r3, r8)]
+        s4 = [e1 - e2 for (e1, e2) in zip(r4, r9)]
+        s5 = [e1 - e2 for (e1, e2) in zip(r5, r10)]
+        x1 = Label(result, text=str(s1), font=('Arial', 14))
+        x2 = Label(result, text=str(s2), font=('Arial', 14))
+        x3 = Label(result, text=str(s3), font=('Arial', 14))
+        x4 = Label(result, text=str(s4), font=('Arial', 14))
+        x5 = Label(result, text=str(s5), font=('Arial', 14))
+
+        if len(r1) != 0:
+            x1.pack()
+        if len(r2) != 0:
+            x2.pack()
+        if len(r3) != 0:
+            x3.pack()
+        if len(r4) != 0:
+            x4.pack()
+        if len(r5) != 0:
+            x5.pack()
+
+    else:
+        np = Label(result, text='Not Possible', font=('Arial', 14))
+        print("I work")
+        np.pack()
+
+
+def matrix_prod():
+    return
 
 
 def clear():
@@ -238,9 +431,9 @@ clear()
 
 # Buttons---------------------------------------------------------------------------------------------------------------
 generate = Button(window, text='Generate', width=11, font=('Arial', 15), command=generate)
-add = Button(window, text=' + ', width=5, font=('Arial', 15))
-subtract = Button(window, text=' - ', width=5, font=('Arial', 15))
-multiply = Button(window, text=' x ', width=5, font=('Arial', 15))
+add = Button(window, text=' + ', width=5, font=('Arial', 15), command=matrix_sum)
+subtract = Button(window, text=' - ', width=5, font=('Arial', 15), command=matrix_diff)
+multiply = Button(window, text=' x ', width=5, font=('Arial', 15), command=matrix_prod)
 clear = Button(window, text='Clear', width=5, font=('Arial', 15), command=clear)
 
 test = Button(window, text="test", command=size)
