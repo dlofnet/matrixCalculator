@@ -7,7 +7,7 @@ window.title("Matrix Calculator")
 
 
 # Test commands---------------------------------------------------------------------------------------------------------
-def test():
+def size():
     ar = 0
     ac = 0
 
@@ -30,9 +30,45 @@ def test():
         ar = 2
     elif A1.get() != "X":
         ar = 1
-        ac = 1
+        ac = 1 
+        
+    matrix_size = str(ar) + "x" + str(ac)
 
-    print("Matrix size is", ar, "x", ac)
+    print("Matrix size is", matrix_size)
+
+
+def generate():
+    result = Toplevel()
+    result.title("Result")
+    size()
+
+    r1 = [A1.get(), A2.get(), A3.get(), A4.get(), A5.get()]
+    r1 = [i for i in r1 if i != 'X']
+    r2 = [A6.get(), A7.get(), A8.get(), A9.get(), A10.get()]
+    r2 = [i for i in r2 if i != 'X']
+    r3 = [A11.get(), A12.get(), A13.get(), A14.get(), A15.get()]
+    r3 = [i for i in r3 if i != 'X']
+    r4 = [A16.get(), A17.get(), A18.get(), A19.get(), A20.get()]
+    r4 = [i for i in r4 if i != 'X']
+    r5 = [A21.get(), A22.get(), A23.get(), A24.get(), A25.get()]
+    r5 = [i for i in r5 if i != 'X']
+
+    x1 = Label(result, text=str(r1), font=('Arial', 14))
+    x2 = Label(result, text=str(r2), font=('Arial', 14))
+    x3 = Label(result, text=str(r3), font=('Arial', 14))
+    x4 = Label(result, text=str(r4), font=('Arial', 14))
+    x5 = Label(result, text=str(r5), font=('Arial', 14))
+
+    if len(r1) != 0:
+        x1.pack()
+    if len(r2) != 0:
+        x2.pack()
+    if len(r3) != 0:
+        x3.pack()
+    if len(r4) != 0:
+        x4.pack()
+    if len(r5) != 0:
+        x5.pack()
 
 
 def clear():
@@ -201,13 +237,13 @@ B25 = Entry(window, width=3, font=('Helvetica', 11))
 clear()
 
 # Buttons---------------------------------------------------------------------------------------------------------------
-generate = Button(window, text='Generate', width=11, font=('Arial', 15))
+generate = Button(window, text='Generate', width=11, font=('Arial', 15), command=generate)
 add = Button(window, text=' + ', width=5, font=('Arial', 15))
 subtract = Button(window, text=' - ', width=5, font=('Arial', 15))
 multiply = Button(window, text=' x ', width=5, font=('Arial', 15))
 clear = Button(window, text='Clear', width=5, font=('Arial', 15), command=clear)
 
-test = Button(window, text="test", command=test)
+test = Button(window, text="test", command=size)
 
 # GUI set up------------------------------------------------------------------------------------------------------------
 title = Label(window, text='Matrix Calculator', font=('Arial', 20, 'bold'))
