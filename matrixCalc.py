@@ -261,7 +261,101 @@ def matrix_diff():
 
 
 def matrix_prod():
-    return
+    result = Toplevel()
+    result.title("Result")
+    result.geometry("250x250")
+
+    if a_col() == b_row():
+        r1 = [A1.get(), A2.get(), A3.get(), A4.get(), A5.get()]
+        r1 = [i for i in r1 if i != 'X']
+        r1 = [eval(i) for i in r1]
+        r2 = [A6.get(), A7.get(), A8.get(), A9.get(), A10.get()]
+        r2 = [i for i in r2 if i != 'X']
+        r2 = [eval(i) for i in r2]
+        r3 = [A11.get(), A12.get(), A13.get(), A14.get(), A15.get()]
+        r3 = [i for i in r3 if i != 'X']
+        r3 = [eval(i) for i in r3]
+        r4 = [A16.get(), A17.get(), A18.get(), A19.get(), A20.get()]
+        r4 = [i for i in r4 if i != 'X']
+        r4 = [eval(i) for i in r4]
+        r5 = [A21.get(), A22.get(), A23.get(), A24.get(), A25.get()]
+        r5 = [i for i in r5 if i != 'X']
+        r5 = [eval(i) for i in r5]
+        c1 = [B1.get(), B6.get(), B11.get(), B16.get(), B21.get()]
+        c1 = [i for i in c1 if i != 'X']
+        c1 = [eval(i) for i in c1]
+        c2 = [B2.get(), B7.get(), B12.get(), B17.get(), B22.get()]
+        c2 = [i for i in c2 if i != 'X']
+        c2 = [eval(i) for i in c2]
+        c3 = [B3.get(), B8.get(), B13.get(), B18.get(), B23.get()]
+        c3 = [i for i in c3 if i != 'X']
+        c3 = [eval(i) for i in c3]
+        c4 = [B4.get(), B9.get(), B14.get(), B19.get(), B24.get()]
+        c4 = [i for i in c4 if i != 'X']
+        c4 = [eval(i) for i in c4]
+        c5 = [B5.get(), B10.get(), B15.get(), B20.get(), B25.get()]
+        c5 = [i for i in c5 if i != 'X']
+        c5 = [eval(i) for i in c5]
+
+        s1 = []
+        s2 = []
+        s3 = []
+        s4 = []
+        s5 = []
+
+        s1.append(sum([a * b for a, b in zip(r1, c1)]))
+        s1.append(sum([a * b for a, b in zip(r1, c2)]))
+        s1.append(sum([a * b for a, b in zip(r1, c3)]))
+        s1.append(sum([a * b for a, b in zip(r1, c4)]))
+        s1.append(sum([a * b for a, b in zip(r1, c5)]))
+        s2.append(sum([a * b for a, b in zip(r2, c1)]))
+        s2.append(sum([a * b for a, b in zip(r2, c2)]))
+        s2.append(sum([a * b for a, b in zip(r2, c3)]))
+        s2.append(sum([a * b for a, b in zip(r2, c4)]))
+        s2.append(sum([a * b for a, b in zip(r2, c5)]))
+        s3.append(sum([a * b for a, b in zip(r3, c1)]))
+        s3.append(sum([a * b for a, b in zip(r3, c2)]))
+        s3.append(sum([a * b for a, b in zip(r3, c3)]))
+        s3.append(sum([a * b for a, b in zip(r3, c4)]))
+        s3.append(sum([a * b for a, b in zip(r3, c5)]))
+        s4.append(sum([a * b for a, b in zip(r4, c1)]))
+        s4.append(sum([a * b for a, b in zip(r4, c2)]))
+        s4.append(sum([a * b for a, b in zip(r4, c3)]))
+        s4.append(sum([a * b for a, b in zip(r4, c4)]))
+        s4.append(sum([a * b for a, b in zip(r4, c5)]))
+        s5.append(sum([a * b for a, b in zip(r5, c1)]))
+        s5.append(sum([a * b for a, b in zip(r5, c2)]))
+        s5.append(sum([a * b for a, b in zip(r5, c3)]))
+        s5.append(sum([a * b for a, b in zip(r5, c4)]))
+        s5.append(sum([a * b for a, b in zip(r5, c5)]))
+
+        s1 = [i for i in s1 if i != 0]
+        s2 = [i for i in s2 if i != 0]
+        s3 = [i for i in s3 if i != 0]
+        s4 = [i for i in s4 if i != 0]
+        s5 = [i for i in s5 if i != 0]
+
+        x1 = Label(result, text=str(s1), font=('Arial', 14))
+        x2 = Label(result, text=str(s2), font=('Arial', 14))
+        x3 = Label(result, text=str(s3), font=('Arial', 14))
+        x4 = Label(result, text=str(s4), font=('Arial', 14))
+        x5 = Label(result, text=str(s5), font=('Arial', 14))
+
+        if len(r1) != 0:
+            x1.pack()
+        if len(r2) != 0:
+            x2.pack()
+        if len(r3) != 0:
+            x3.pack()
+        if len(r4) != 0:
+            x4.pack()
+        if len(r5) != 0:
+            x5.pack()
+
+    else:
+        np = Label(result, text='Not Possible', font=('Arial', 14))
+        print("I work")
+        np.pack()
 
 
 def clear():
