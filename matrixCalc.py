@@ -6,7 +6,7 @@ window.geometry("400x200")
 window.title("Matrix Calculator")
 
 
-# Test commands---------------------------------------------------------------------------------------------------------
+# Methods---------------------------------------------------------------------------------------------------------
 def a_row():
 
     global ar
@@ -71,24 +71,10 @@ def b_col():
     return bc
 
 
-def size():
-    a_row()
-    a_col()
-    b_row()
-    b_col()
-        
-    matrix_size_a = str(a_row()) + "x" + str(a_col())
-    matrix_size_b = str(b_row()) + "x" + str(b_col())
-
-    print("Matrix size is", matrix_size_a)
-    print("Matrix size is", matrix_size_b)
-
-
 def generate():
     result = Toplevel()
     result.title("Result")
-    result.geometry("250x250")
-    size()
+    result.geometry("200x150")
 
     r1 = [A1.get(), A2.get(), A3.get(), A4.get(), A5.get()]
     r1 = [i for i in r1 if i != 'X']
@@ -127,11 +113,7 @@ def generate():
 def matrix_sum():
     result = Toplevel()
     result.title("Result")
-    result.geometry("250x250")
-    print(a_row())
-    print(a_col())
-    print(b_row())
-    print(b_col())
+    result.geometry("200x150")
 
     if a_row() == b_row() and a_col() == b_col():
         r1 = [A1.get(), A2.get(), A3.get(), A4.get(), A5.get()]
@@ -188,18 +170,13 @@ def matrix_sum():
 
     else:
         np = Label(result, text='Not Possible', font=('Arial', 14))
-        print("I work")
         np.pack()
 
 
 def matrix_diff():
     result = Toplevel()
     result.title("Result")
-    result.geometry("250x250")
-    print(a_row())
-    print(a_col())
-    print(b_row())
-    print(b_col())
+    result.geometry("200x150")
 
     if a_row() == b_row() and a_col() == b_col():
         r1 = [A1.get(), A2.get(), A3.get(), A4.get(), A5.get()]
@@ -256,14 +233,13 @@ def matrix_diff():
 
     else:
         np = Label(result, text='Not Possible', font=('Arial', 14))
-        print("I work")
         np.pack()
 
 
 def matrix_prod():
     result = Toplevel()
     result.title("Result")
-    result.geometry("250x250")
+    result.geometry("200x150")
 
     if a_col() == b_row():
         r1 = [A1.get(), A2.get(), A3.get(), A4.get(), A5.get()]
@@ -354,7 +330,6 @@ def matrix_prod():
 
     else:
         np = Label(result, text='Not Possible', font=('Arial', 14))
-        print("I work")
         np.pack()
 
 
@@ -530,15 +505,14 @@ subtract = Button(window, text=' - ', width=5, font=('Arial', 15), command=matri
 multiply = Button(window, text=' x ', width=5, font=('Arial', 15), command=matrix_prod)
 clear = Button(window, text='Clear', width=5, font=('Arial', 15), command=clear)
 
-test = Button(window, text="test", command=size)
-
 # GUI set up------------------------------------------------------------------------------------------------------------
 title = Label(window, text='Matrix Calculator', font=('Arial', 20, 'bold'))
 
 # Griding---------------------------------------------------------------------------------------------------------------
 title.grid(row=0, column=1, columnspan=11)
-
 A.grid(row=3, column=0)
+B.grid(row=3, column=6)
+
 A1.grid(row=1, column=1)
 A2.grid(row=1, column=2)
 A3.grid(row=1, column=3)
@@ -564,8 +538,6 @@ A22.grid(row=5, column=2)
 A23.grid(row=5, column=3)
 A24.grid(row=5, column=4)
 A25.grid(row=5, column=5)
-
-B.grid(row=3, column=6)
 B1.grid(row=1, column=7)
 B2.grid(row=1, column=8)
 B3.grid(row=1, column=9)
@@ -597,8 +569,5 @@ clear.grid(row=6, column=4, columnspan=2)
 add.grid(row=6, column=6, columnspan=2)
 subtract.grid(row=6, column=8, columnspan=2)
 multiply.grid(row=6, column=10, columnspan=2)
-
-
-test.grid(row=7, column=0)
 
 window.mainloop()
